@@ -1,0 +1,21 @@
+pipeline {
+ agent {label 'agent'}
+  stages {
+    stage ('checkout'){
+      steps {
+              checkout scm}
+             }
+     stage ('build'){
+       steps {
+              sh 'mvn install'}
+             }
+     stage ('definescript'){
+       steps {
+              sh 'cp target/ford.war mahesh1@172.17.0.2:/home/mahesh1/soft/apache-tomcat-8.5.32/webapps'}
+             }
+     stage ('serverstart'){
+       steps{
+             sh 'export JAVA_HOME=/home/mahesh1/soft/jdk1.8.0_181/bin ;/home/mahesh1/soft/apache-tomcat-8.5.32/bin/startup.sh'}
+            } 
+          }
+        }  
