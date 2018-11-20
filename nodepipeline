@@ -7,7 +7,7 @@ pipeline {
              }
      stage ('build'){
        steps {
-              sh 'install'}
+              sh 'mvn install'}
              }
      stage ('definescript'){
        steps {
